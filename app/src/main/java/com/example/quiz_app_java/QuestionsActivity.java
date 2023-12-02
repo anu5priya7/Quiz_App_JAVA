@@ -36,6 +36,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class QuestionsActivity extends AppCompatActivity {
      public static final String FILE_NAME = "QUIZZER";
@@ -56,13 +57,14 @@ public class QuestionsActivity extends AppCompatActivity {
     private int score = 0;
     private Dialog loadingDialog;
 
+
     private List<QuestionModel> bookmarksList;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private Gson gson;
     private  int matchedQuestionPosition;
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,7 @@ public class QuestionsActivity extends AppCompatActivity {
 
         loadingDialog = new Dialog(this);
         loadingDialog.setContentView(R.layout.loading);
-        loadingDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.rounded_corners));
+        Objects.requireNonNull(loadingDialog.getWindow()).setBackgroundDrawable(getDrawable(R.drawable.rounded_corners));
         loadingDialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
         loadingDialog.setCancelable(false);
 
@@ -175,6 +177,8 @@ public class QuestionsActivity extends AppCompatActivity {
     private void playAnim(View view, int value, String data){
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100)
                 .setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
+
+
                     @Override
                     public void onAnimationStart(@NonNull Animator animation) {
                         if (value == 0 && count < 4) {
@@ -200,11 +204,14 @@ public class QuestionsActivity extends AppCompatActivity {
                             try {
                                 ((TextView) view).setText(data);
                                 noIndicator.setText((position + 1) + "/" + list.size());
-                                ImageSwitcher bookmarkBtn = null;
-                                if(modelMatch()){
-                                    bookmarkBtn.setImageDrawable(getDrawable(R.drawable.bookmark));
-                                }else {
-                                    bookmarkBtn.setImageDrawable(getDrawable(R.drawable.bookmark_border));
+
+                                ImageSwitcher bookmarkBtn =null;
+                                if (bookmarkBtn != null) {
+                                    if (modelMatch()) {
+                                        bookmarkBtn.setImageDrawable(getDrawable(R.drawable.bookmark));
+                                    } else {
+                                        bookmarkBtn.setImageDrawable(getDrawable(R.drawable.bookmark_border));
+                                    }
                                 }
                             }catch (ClassCastException ex){
                                 ((Button) view).setText(data);

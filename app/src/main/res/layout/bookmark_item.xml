@@ -26,9 +26,10 @@
     <ImageButton
         android:id="@+id/delete_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:padding="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="Enter How Much Cookies You Want"
         android:src="@drawable/delete"/>
 
 </LinearLayout>

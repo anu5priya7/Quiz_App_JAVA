@@ -22,7 +22,8 @@ public class BookmarksAdapter extends RecyclerView.Adapter<BookmarksAdapter.View
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bookmark_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bookmark_item,parent,
+                false);
           return new Viewholder(view);
     }
 
@@ -48,13 +49,17 @@ public class BookmarksAdapter extends RecyclerView.Adapter<BookmarksAdapter.View
             deleteBtn = itemView.findViewById(R.id.delete_btn);
         }
 
-        private  void setData(String question, String answer, final int position){
+        private void setData(String question, String answer, final int position){
             this.question.setText(question);
             this.answer.setText(answer);
 
-            deleteBtn.setOnClickListener(v -> {
-                list.remove(position);
-                notifyItemRemoved(position);
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    list.remove(position);
+                    notifyItemRemoved(position);
+
+                }
             });
         }
     }

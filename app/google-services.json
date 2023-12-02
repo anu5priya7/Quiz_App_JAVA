@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "85516952999",
-    "project_id": "quiappjava",
-    "storage_bucket": "quiappjava.appspot.com"
+    "project_number": "671387817350",
+    "firebase_url": "https://quizappjava-6673c-default-rtdb.firebaseio.com",
+    "project_id": "quizappjava-6673c",
+    "storage_bucket": "quizappjava-6673c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:85516952999:android:0df1b1d4da11ddaad24282",
+        "mobilesdk_app_id": "1:671387817350:android:cc7c3b98e22ce0b9cf0807",
         "android_client_info": {
           "package_name": "com.example.quiz_app_java"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBKSGp4_CW4aoeJG4Cii8twDm6WbBKyNDM"
+          "current_key": "AIzaSyDOXW9LuvVqNoEUi7BiUoOqvLUnxCjTtbM"
         }
       ],
       "services": {

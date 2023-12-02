@@ -2,9 +2,11 @@ package com.example.quiz_app_java;
 
 import static com.example.quiz_app_java.QuestionsActivity.FILE_NAME;
 import static com.example.quiz_app_java.QuestionsActivity.KEY_NAME;
+import static com.example.quiz_app_java.R.id.*;
 import static com.example.quiz_app_java.R.id.toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 //import android.annotation.SuppressLint;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,12 +43,14 @@ public class BookmarkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+         Toolbar toolbar =  findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Bookmarks");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        ActionBar actionBar = getSupportActionBar();
+        //setSupportActionBar(toolbar);
+        if (actionBar != null) {
+            getSupportActionBar().setTitle("Bookmarks");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         RecyclerView recyclerView = findViewById(R.id.rv_bookmarks);
 
         preferences= getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
